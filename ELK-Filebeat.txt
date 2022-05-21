@@ -1,0 +1,393 @@
+    1  ls
+    2  cd /fi
+    3  exit
+    4  sudo /filebeat setup -e
+    5  ln -s filebeat-8.1.3-linux-x86_64 filebeat780
+    6  sudo systemctl enable filebeat.service
+    7  sudo apt-get update && sudo apt-get install filebeat -y
+    8  clear
+    9  cd
+   10  sudo filebeat modules list
+   11  sudo apt install nginx
+   12  sudo filebeat modules enable nginx
+   13  sudo vim /etc/filebeat/filebeat.yml
+   14  filebeat -e
+   15  sudo systemctl enable filebeat
+   16  sudo systemctl disable filebeat
+   17  sudo systemctl status filebeat
+   18  sudo systemctl start filebeat
+   19  sudo systemctl status filebeat
+   20  sudo vim /etc/filebeat/filebeat.yml
+   21  sudo systemctl restart filebeat
+   22  sudo systemctl status filebeat
+   23  sudo vim /etc/filebeat/filebeat.yml
+   24  sudo systemctl restart filebeat
+   25  sudo systemctl status filebeat
+   26  sudo vim /etc/filebeat/filebeat.yml
+   27  sudo systemctl restart filebeat
+   28  sudo systemctl status filebeat
+   29  sudo nano /etc/logstash/conf.d/02-beats-input.conf
+   30  sudo nano /etc/logstash/conf.d/30-elasticsearch-output.conf
+   31  sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+   32  sudo systemctl restart logstash
+   33  sudo nano /etc/filebeat/filebeat.yml
+   34  sudo filebeat modules enable system
+   35  sudo filebeat setup --pipelines --modules system
+   36  netstat -tupln
+   37  systemctl status logstash
+   38  sudo filebeat modules list
+   39  systemctl start filebeat
+   40  systemctl status filebeat
+   41  sudo nano /etc/filebeat/filebeat.yml
+   42  sudo nano /etc/logstash/conf.d/02-beats-input.conf
+		input {
+  			beats {
+    				port => 5044
+				host => "192.58.65.3"
+  			}
+		}
+		filter {
+  			grok {
+    				match => { "message" => "%{COMBINEDAPACHELOG}" }
+  			}
+  			date {
+    				match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  			}
+		}
+
+		output {
+  			elasticsearch { hosts => ["localhost:9200"] }
+  			stdout { codec => rubydebug }
+		}
+   43  sudo touch /etc/logstash/conf.d/30-elasticsearch-output.conf
+   44  sudo nano /etc/logstash/conf.d/30-elasticsearch-output.conf
+		input {
+  			beats {
+    				port => 5044
+				host => "192.58.65.3"
+  			}
+		}
+		filter {
+  			grok {
+    				match => { "message" => "%{COMBINEDAPACHELOG}" }
+  			}
+  			date {
+    				match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  			}
+		}
+
+		output {
+  			elasticsearch { hosts => ["localhost:9200"] }
+  			stdout { codec => rubydebug }
+		}
+   45  sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+   46  sudo systemctl start logstash
+   47  sudo systemctl enable logstash
+   48  sudo systemctl start logstash
+   49  sudo systemctl status logstash
+   50  sudo apt install filebeat
+   51  sudo filebeat modules enable system
+   52  sudo filebeat modules list
+   53  sudo filebeat setup --pipelines --modules system
+   54  nano /etc/filebeat/modules.d/system.yml
+   55  sudo filebeat setup --pipelines --modules system
+   56  sudo filebeat setup --index-management -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
+   57  ./filebeat setup
+   58  ls
+   59  cd /opt
+   60  ls
+   61  cd
+   62  cd filebeat-6.8.23-darwin-x86_64/
+   63  clear
+   64  sudo systemctl status logstash
+   65  sudo systemctl status filebeats
+   66  clear
+   67  cd elasticsearch/
+   68  ls
+   69  nano elasticsearch.yml
+   70  cd ..
+   71  logstash/
+   72  ls
+   73  cd logstash/
+   74  ls
+   75  nano log
+   76  nano logstash.yml
+   77  ls
+   78  nano pipelines.yml
+   79  cd conf.d/
+   80  ls
+   81  rm 30-elasticsearch-output.conf
+   82  rm 10-syslog.conf
+   83  ls
+   84  nano my_pipeline.conf
+   85  sudo systemctl restart logstash
+   86  sudo systemctl restart status
+   87  sudo systemctl status logstash
+   88  clear
+   89  sudo systemctl restart elasticsearch
+   90  sudo systemctl status filebeats
+   91  sudo systemctl status filebeat
+   92  cd ..
+   93  cd filebeat/
+   94  ls
+   95  nano filebeat.yml
+   96  sudo /usr/share/filebeat/bin/filebeat test output --path.config /etc/filebeat
+   97  cd ..
+   98  cd /var/logs
+   99  cd /var/log
+  100  ls
+  101  cd filebeat/
+  102  ls
+  103  cd
+  104  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.1.3-linux-x86_64.tar.gz
+  105  tar xzvf filebeat-8.1.3-linux-x86_64.tar.gz
+  106  ls
+  107  cd filebeat-8.1.3-linux-x86_64
+  108  ls
+  109  ./filebeat modules list
+  110  ./filebeat modules enable nginx
+  111  ls
+  112  cd modules.d
+  113  ls
+  114  nano nginx.yml
+  115  cd ..
+  116  ls
+  117  nano filebeat.yml
+  118  ./filebeat setup -e
+  119  sudo chown root filebeat.yml
+  120  sudo chown root modules.d/nginx.yml
+  121  sudo ./filebeat -e
+  122  history
+
+
+
+
+
+    1  sudo apt-get update
+    2  sudo apt update
+    3  sudo apt upgrade
+    4  sudo apt-get upgrade
+    5  clear
+    6  sudo reboot
+    7  clear
+    8  sudo apt-get install openjdk-7-jre-headless
+    9  sudo apt-get install openjdk-11-jre-headless
+   10  wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+   11  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+   12  sudo apt-key list
+   13  sudo apt update
+   14  sudo apt install gnupg2 wget ca-certificates
+   15  sudo apt install gnupg2 wget ca-certificates lsb-release software-properties-common
+   16  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+   17  sudo apt-get update
+   18  echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+   19  sudo apt-get update
+   20  sudo apt-get install elasticsearch
+   21  netstat -tupln
+   22  sudo apt install net-tools
+   23  netstat -tupln
+   24  sudo service elasticsearch start
+   25  sudo service elasticsearch status
+   26  sudo curl http://localhost:9200
+   27  sudo apt-get install logstash
+   28  sudo vim /etc/logstash/conf.d/10-syslog.conf
+   29  sudo service logstash restart
+   30  sudo curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+   31  sudo apt-get install kibana
+   32  sudo vim /etc/kibana/kibana.yml
+   33  sudo service kibana start
+   34  netstat -tupln
+   35  sudo vim /etc/kibana/kibana.yml
+   36  sudo service kibana restart
+   37  sudo service kibana status
+   38  netstat -tupln
+   39  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.1.3-linux-x86_64.tar.gz
+   40  tar xzvf filebeat-8.1.3-linux-x86_64.tar.gz
+   41  ./filebeat modules list
+   42  ls
+   43  cd filebeat-8.1.3-linux-x86_64/
+   44  ls
+   45  sudo /filebeat setup -e
+   46  sudo su -
+   47  pwd
+   48  sudo su
+   49  clear
+   50  cd /etc/logstash/conf.d
+   51  ls
+   52  nano 10-syslog.conf
+		input {
+  			beats {
+    				port => 5044
+				host => "192.58.65.3"
+  			}
+		}
+		filter {
+  			grok {
+    				match => { "message" => "%{COMBINEDAPACHELOG}" }
+  			}
+  			date {
+    				match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  			}
+		}
+
+		output {
+  			elasticsearch { hosts => ["localhost:9200"] }
+  			stdout { codec => rubydebug }
+		}
+   53  nano 30-elasticsearch-output.conf
+   54  sudo  tail /var/log/logstash/logstash-plain
+   55  sudo  tail /var/log/logstash
+   56  cd /var/log/logstash
+   57  ls
+   58  sudo  tail /var/log/logstash/logstash-plain.log
+   59  sudo service kibana status
+   60  sudo service elasticsearch status
+   61  sudo service elasticsearch start
+   62  sudo service elasticsearch status
+   63  netstat -tupln
+   64  sudo curl http://localhost:9200
+   65  sudo service logstash status
+   66  sudo service kibana status
+   67  sudo service kibana start
+   68  sudo service kibana status
+   69  sudo  tail /var/log/logstash/logstash-plain.log
+   70  sudo tail -f /var/log/logstash/logstash-plain.log
+   71  clear
+   72  ls
+   73  cd /etc/logstash/conf.d
+   74  ls
+   75  cd ..
+   76  ls
+   77  sudo nano pipelines.yml
+   78  cd conf.d/
+   79  ls
+   80  nano my_pipelines.conf
+		input {
+  			beats {
+    				port => 5044
+				host => "192.58.65.3"
+  			}
+		}
+		filter {
+  			grok {
+    				match => { "message" => "%{COMBINEDAPACHELOG}" }
+  			}
+  			date {
+    				match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  			}
+		}
+
+		output {
+  			elasticsearch { hosts => ["localhost:9200"] }
+  			stdout { codec => rubydebug }
+		}
+   81  ls
+   82  sudo touch my_pipelines.conf
+   83  ls
+   84  cd ..
+   85  ls
+   86  nano pipelines.yml
+   87  cd conf.d/
+   88  ls
+   89  mv my_pipelines.conf my_pipeline.conf
+   90  sudo mv my_pipelines.conf my_pipeline.conf
+   91  ls
+   92  cat 02-beats-input.conf
+   93  sudo nano my_pipeline.conf
+   94  cat 10-syslog.conf
+   95  sudo nano my_pipeline.conf
+   96  sudo service logstash start
+   97  sudo service logstash status
+   98  tail -f /var/log/logstash-plain.log
+   99  tail -f /var/log/logstash/logstash-plain.log
+  100  cd /var
+  101  ls
+  102  ll
+  103  cd log
+  104  ls
+  105  ll
+  106  sudo chmod -R 777 elasticsearch
+  107  sudo chmod -R 777 filebeat
+  108  sudo chmod -R 777 kern.log
+  109  sudo chmod -R 777 logstash
+  110  sudo chmod -R 777 nginx
+  111  ll
+  112  clear
+  113  cd
+  114  tail -f /var/log/logstash/logstash-plain.log
+  115  cd /var
+  116  cd log
+  117  ll
+  118  sudo chmod -R 777 auth.log
+  119  clear
+  120  sudo service logstash restart
+  121  sudo service logstash start
+  122  sudo service logstash status
+  123  tail -f /var/log/logstash/logstash-plain.log
+  124  netstat -tupln
+  125  sudo vim /etc/logstash/
+  126  ls
+  127  cd
+  128  cd /etc/
+  129  ls
+  130  cd logstash/
+  131  ls
+  132  nano logstash.yml
+  133  nano logstash-sample.conf
+  134  rm logstash-sample.conf
+  135  sudo rm logstash-sample.conf
+  136  cd conf.d/
+  137  ls
+  138  cat 02-beats-input.conf
+  139  sudo rm 02-beats-input.conf
+  140  cat 10-syslog.conf
+  141  sudo nano 30-elasticsearch-output.conf
+  142  cd
+  143  cd /etc
+  144  ls
+  145  cd filebeat/
+  146  ls
+  147  sudo nano fi
+  148  ls
+  149  sudo nano filebeat.yml
+  150  cd
+  151  clear
+  152  sudo service logstash restart
+  153  sudo service logstash filebeats
+  154  sudo service logstash status
+  155  sudo service elasticsearch restart
+  156  sudo service elasticsearch status
+  157  sudo service kibana restart
+  158  sudo service kibana status
+  159  sudo service filebeat restart
+  160  sudo service filebeat status
+  161  cd /var/log/filebeat
+  162  ls
+  163  ll
+  164  sudo nano filebeat.7
+  165  sudo nano filebeat.6
+  166  cd
+  167  cd /etc
+  168  ls
+  169  cd filebeat/
+  170  ls
+  171  sudo nano filebeat.yml
+  172  sudo service logstash status
+  173  telnet localhost 5044
+  174  curl localhost:5044
+  175  curl -X GET"localhost:5044"
+  176  sudo curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+  177  sudo curl -XGET 'localhost:9200/'
+  178  sudo curl -XGET 'localhost:5044/'
+  179  sudo nano filebeat.yml
+  180  sudo filebeat -e -c /etc/filebeat/filebeat.yml
+  181  clear
+  182  cd /etc
+  183  ls
+  184  cd elasticsearch/
+  185  ls
+  186  cd elasticsearch
+  187  sudo su
+  188  history
+
+
